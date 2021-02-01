@@ -148,7 +148,7 @@ def load_lfw(batch_size):
     all_photos = np.stack(all_photos)
     temp_ds = tf.data.Dataset.from_tensor_slices((all_photos, all_photos))
     temp_ds = temp_ds.map(transforms, num_parallel_calls=tf.data.experimental.AUTOTUNE)
-    temp_ds = temp_ds.shuffle(ds_size)
+    temp_ds = temp_ds.shuffle(ds_size, seed=42)
     
     test_ds = temp_ds.take(int(ds_size / 10.))
     train_ds = temp_ds.skip(int(ds_size / 10.))
@@ -171,7 +171,7 @@ def load_lfw(batch_size):
     return (train_ds, eval_ds, test_ds)
 
 
-def load_blury_lfw(batch_size):
+def load_blurry_lfw(batch_size):
     def decode_image_from_raw_bytes(raw_bytes):
         img = cv2.imdecode(np.asarray(bytearray(raw_bytes), dtype=np.uint8), 1)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -180,7 +180,7 @@ def load_blury_lfw(batch_size):
         return tf.cast(x, tf.float32) / 255., tf.cast(y, tf.float32) / 255.
     crop = 30
     size = 128
-    blur_k = 8
+    blur_k = 6
     lfw_path = 'D:\datasets\lfw.tgz'
     all_photos = []
     all_blured_photos = []
@@ -198,7 +198,7 @@ def load_blury_lfw(batch_size):
     all_blured_photos = np.stack(all_blured_photos)
     temp_ds = tf.data.Dataset.from_tensor_slices((all_blured_photos, all_photos))
     temp_ds = temp_ds.map(transforms, num_parallel_calls=tf.data.experimental.AUTOTUNE)
-    temp_ds = temp_ds.shuffle(ds_size)
+    temp_ds = temp_ds.shuffle(ds_size, seed=42)
     
     test_ds = temp_ds.take(int(ds_size / 10.))
     train_ds = temp_ds.skip(int(ds_size / 10.))

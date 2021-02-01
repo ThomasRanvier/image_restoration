@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+
 class GenericModel(tf.keras.Model):
     def __init__(self):
         super(GenericModel, self).__init__()
@@ -40,14 +41,14 @@ class GenericModel(tf.keras.Model):
     def _eval_step(self, x, y):
         y_hat = self.call(x)
         return self._loss(y_hat, y).numpy(), y_hat
-
+        
 
 class GenericAutoencoder(GenericModel):
     def __init__(self,
-                 loss,
-                 optimizer,
                  encoder,
-                 decoder):
+                 decoder,
+                 loss,
+                 optimizer):
         super(GenericAutoencoder, self).__init__()
         self._loss = loss
         self._optimizer = optimizer
@@ -62,4 +63,3 @@ class GenericAutoencoder(GenericModel):
     
     def call(self, x):
         return self.decode(self.encode(x))
-        
