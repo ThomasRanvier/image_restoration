@@ -9,11 +9,11 @@ The train.py script is used to train the available models.
 
 Implemented models:
 * AutoEncoder (Standard implementation)
-* U-Net [https://arxiv.org/pdf/1505.04597.pdf](Ronneberger 2015)
-* (In progress) SRCNN [https://arxiv.org/pdf/1501.00092.pdf](Dong 2015)
-* (In progress) DnCNN [https://arxiv.org/pdf/1608.03981.pdf](Zhang 2016)
-* (In progress) DCGAN [https://arxiv.org/pdf/1511.06434.pdf](Radford 2016)
-* (In progress) Deep Image Prior [https://arxiv.org/pdf/1711.10925v4.pdf](Ulyanov 2020)
+* U-Net [Ronneberger 2015](https://arxiv.org/pdf/1505.04597.pdf)
+* (In progress) SRCNN [Dong 2015](https://arxiv.org/pdf/1501.00092.pdf)
+* (In progress) DnCNN [Zhang 2016](https://arxiv.org/pdf/1608.03981.pdf)
+* (In progress) DCGAN [Radford 2016](https://arxiv.org/pdf/1511.06434.pdf)
+* (In progress) Deep Image Prior [Ulyanov 2020](https://arxiv.org/pdf/1711.10925v4.pdf)
 
 
 Used datasets:
