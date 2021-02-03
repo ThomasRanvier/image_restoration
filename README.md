@@ -1,6 +1,6 @@
 # Image Restoration
 
-Experimentations with image restoration using AutoEncoders and Conv-nets, implementations in TensorFlow 2.0.
+Experimentations with image restoration using AutoEncoders, Conv-nets and GANs, implementations in TensorFlow 2.0.
 
 Most of those models are trained in the objective to perform three image restoration tasks: denoising, upscaling and JPEG deblocking.
 
