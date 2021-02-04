@@ -16,6 +16,7 @@ Implemented models:
 * (In progress) TNRD [Chen 2016](https://arxiv.org/pdf/1508.02848.pdf)
 * (In progress) DnCNN [Zhang 2016](https://arxiv.org/pdf/1608.03981.pdf)
 * (In progress) DCGAN [Radford 2016](https://arxiv.org/pdf/1511.06434.pdf)
+* (In progress) SRGAN [Ledig 2017](https://arxiv.org/pdf/1609.04802.pdf)
 * (In progress) DPIR [Zhang 2020](https://arxiv.org/pdf/2008.13751.pdf)
 * (In progress) Deep Image Prior [Ulyanov 2020](https://arxiv.org/pdf/1711.10925v4.pdf)
 
@@ -24,7 +25,7 @@ Used datasets:
 * Fashion MNIST
 * CIFAR
 * Labeled Faces in the Wild (LFW)
-* BSDS500 + 91 images from [Dong 2015](https://arxiv.org/pdf/1501.00092.pdf)
+* BSDS500
 
 ## Models description
 
@@ -49,17 +50,15 @@ The goal of this model is to upscale an image while augmenting its resolution.
 
 ### BSDS500
 
-Images dimension: 321x481
+Images dimension: 480x320x3
 
 Total ground truth training images: 200.
-Each image is split in 6 sub-images of size 160x160 for a total of 200x6=1200 images, a pre-processing step is then applied to the training set.
+Each image is split in 6 sub-images of size 160x160 and randomly rotated by 0, 90, 180, or 270 degrees for a total of 200x6=1200 images, a pre-processing step is then applied to the training set.
 During preprocessing, for each training image X we:
 * Generate a noisy version of X with a noise level randomly chosen from 15, 25 or 50.
 * Generate a low resolution version of X by applying a bicubic downsampling followed by a bicubic upsampling with a downscaling factor randomly chosen from 2, 3 or 4.
 * Generate a JPEG compressed version of X by saving it with a compression level randomly chosen from 10, 20, 30 or 40.
 Total training images after preprocessing: 1200x3=3600 images.
-
-Each image is randomly rotated by 0, 90, 180, or 270 degrees.
 
 The same pre-processing as above is applied on the validation set: 100x3=300 (except for the rotation).
 

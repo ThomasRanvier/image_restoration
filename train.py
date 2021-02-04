@@ -19,6 +19,7 @@ available_datasets = [
     'noisy_cifar',
     'lfw',
     'blurry_lfw',
+    'bsds500',
 ]
 
 input_shapes = {
@@ -30,6 +31,7 @@ input_shapes = {
     'noisy_cifar': (32, 32, 3),
     'lfw': (128, 128, 3),
     'blurry_lfw': (128, 128, 3),
+    'bsds500': (481, 321, 3),
 }
 
     

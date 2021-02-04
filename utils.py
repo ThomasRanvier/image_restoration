@@ -16,6 +16,7 @@ def load_dataset(dataset_name, batch_size=128):
         'noisy_cifar': datasets.load_noisy_cifar,
         'lfw': datasets.load_lfw,
         'blurry_lfw': datasets.load_blurry_lfw,
+        'bsds500': datasets.load_bsds500,
     }
     return datasets_switch.get(dataset_name, lambda x: _raise(f'Dataset {dataset_name} unknown!'))(batch_size)
 
