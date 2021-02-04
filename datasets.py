@@ -6,6 +6,8 @@ import numpy as np
 import tensorflow as tf
 import tensorflow_datasets as tfds
 
+ROOT_DIR = 'D:\\datasets\\'
+
 def generic_processing(temp_ds, test_ds, info, batch_size, transforms):
     temp_ds = temp_ds.map(transforms, num_parallel_calls=tf.data.experimental.AUTOTUNE)
     
@@ -34,7 +36,7 @@ def load_mnist(batch_size):
                                         shuffle_files=True,
                                         as_supervised=True,
                                         with_info=True,
-                                        data_dir='D:\datasets')
+                                        data_dir=ROOT_DIR)
     
     def transforms(image, label):
         img = tf.cast(image, tf.float32) / 255.
@@ -49,7 +51,7 @@ def load_noisy_mnist(batch_size):
                                         shuffle_files=True,
                                         as_supervised=True,
                                         with_info=True,
-                                        data_dir='D:\datasets')
+                                        data_dir=ROOT_DIR)
     
     def transforms(image, label):
         img = tf.cast(image, tf.float32) / 255.
@@ -66,7 +68,7 @@ def load_fashion_mnist(batch_size):
                                         shuffle_files=True,
                                         as_supervised=True,
                                         with_info=True,
-                                        data_dir='D:\datasets')
+                                        data_dir=ROOT_DIR)
     
     def transforms(image, label):
         img = tf.cast(image, tf.float32) / 255.
@@ -81,7 +83,7 @@ def load_noisy_fashion_mnist(batch_size):
                                         shuffle_files=True,
                                         as_supervised=True,
                                         with_info=True,
-                                        data_dir='D:\datasets')
+                                        data_dir=ROOT_DIR)
     
     def transforms(image, label):
         img = tf.cast(image, tf.float32) / 255.
@@ -98,7 +100,7 @@ def load_cifar(batch_size):
                                         shuffle_files=True,
                                         as_supervised=True,
                                         with_info=True,
-                                        data_dir='D:\datasets')
+                                        data_dir=ROOT_DIR)
     
     def transforms(image, label):
         img = tf.cast(image, tf.float32) / 255.
@@ -113,7 +115,7 @@ def load_noisy_cifar(batch_size):
                                         shuffle_files=True,
                                         as_supervised=True,
                                         with_info=True,
-                                        data_dir='D:\datasets')
+                                        data_dir=ROOT_DIR)
     
     def transforms(image, label):
         img = tf.cast(image, tf.float32) / 255.
@@ -134,12 +136,12 @@ def load_lfw(batch_size):
         return img, img
     crop = 30
     size = 128
-    lfw_path = 'D:\datasets\lfw.tgz'
+    lfw_path = f'{ROOT_DIR}lfw.tgz'
     all_photos = []
     ds_size = 0
     with tarfile.open(lfw_path) as f:
         for m in tqdm.tqdm_notebook(f.getmembers()):
-            if m.isfile() and m.name.endswith(".jpg"):
+            if m.isfile() and m.name.endswith('.jpg'):
                 img = decode_image_from_raw_bytes(f.extractfile(m).read())
                 img = img[crop:-crop, crop:-crop]
                 img = cv2.resize(img, (size, size))
@@ -181,13 +183,13 @@ def load_blurry_lfw(batch_size):
     crop = 30
     size = 128
     blur_k = 6
-    lfw_path = 'D:\datasets\lfw.tgz'
+    lfw_path = f'{ROOT_DIR}lfw.tgz'
     all_photos = []
     all_blured_photos = []
     ds_size = 0
     with tarfile.open(lfw_path) as f:
         for m in tqdm.tqdm_notebook(f.getmembers()):
-            if m.isfile() and m.name.endswith(".jpg"):
+            if m.isfile() and m.name.endswith('.jpg'):
                 img = decode_image_from_raw_bytes(f.extractfile(m).read())
                 img = img[crop:-crop, crop:-crop]
                 img = cv2.resize(img, (size, size))

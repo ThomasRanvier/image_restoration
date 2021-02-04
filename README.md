@@ -61,17 +61,17 @@ Total training images after preprocessing: 1200x3=3600 images.
 
 Each image is randomly rotated by 0, 90, 180, or 270 degrees.
 
-The same pre-processing as above is applied on the validation set: 100x3 = 300 (except for the rotation).
+The same pre-processing as above is applied on the validation set: 100x3=300 (except for the rotation).
 
 Total ground truth test images: 200.
 Test sets:
-* Noisy15: Noise level of 15 applied to the test set.
-* Noisy25: Noise level of 25 applied to the test set.
-* Noisy50: Noise level of 50 applied to the test set.
-* Upscale2: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 2 applied to the test set.
-* Upscale3: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 3 applied to the test set.
-* Upscale4: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 4 applied to the test set.
-* JPEG10: Quality level of 10 applied to the test set.
-* JPEG20: Quality level of 20 applied to the test set.
-* JPEG30: Quality level of 30 applied to the test set.
-* JPEG40: Quality level of 40 applied to the test set.
+* noise_15: Noise level of 15 applied to the test set.
+* noise_25: Noise level of 25 applied to the test set.
+* noise_50: Noise level of 50 applied to the test set.
+* upscale_2: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 2 applied to the test set.
+* upscale_3: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 3 applied to the test set.
+* upscale_4: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 4 applied to the test set.
+* compress_10: Quality level of 10 applied to the test set.
+* compress_20: Quality level of 20 applied to the test set.
+* compress_30: Quality level of 30 applied to the test set.
+* compress_40: Quality level of 40 applied to the test set.
