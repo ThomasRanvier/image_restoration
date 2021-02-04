@@ -1,6 +1,6 @@
 # Image Restoration
 
-Experimentations with image restoration using AutoEncoders and Conv-nets, implementations in TensorFlow 2.0.
+Experimentations on image restoration using AutoEncoders, Conv-nets and GANs, implementations in TensorFlow 2.0.
 
 Most of those models are trained in the objective to perform three image restoration tasks: denoising, upscaling and JPEG deblocking.
 
@@ -65,13 +65,13 @@ The same pre-processing as above is applied on the validation set: 100x3=300 (ex
 
 Total ground truth test images: 200.
 Test sets:
-* noise_15: Noise level of 15 applied to the test set.
-* noise_25: Noise level of 25 applied to the test set.
-* noise_50: Noise level of 50 applied to the test set.
-* upscale_2: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 2 applied to the test set.
-* upscale_3: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 3 applied to the test set.
-* upscale_4: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 4 applied to the test set.
-* compress_10: Quality level of 10 applied to the test set.
-* compress_20: Quality level of 20 applied to the test set.
-* compress_30: Quality level of 30 applied to the test set.
-* compress_40: Quality level of 40 applied to the test set.
+* noise\_15: Noise level of 15 applied to the test set.
+* noise\_25: Noise level of 25 applied to the test set.
+* noise\_50: Noise level of 50 applied to the test set.
+* upscale\_2: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 2 applied to the test set.
+* upscale\_3: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 3 applied to the test set.
+* upscale\_4: Bicubic downsampling followed by bicubic upsampling with downscaling factor of 4 applied to the test set.
+* compress\_10: Quality level of 10 applied to the test set.
+* compress\_20: Quality level of 20 applied to the test set.
+* compress\_30: Quality level of 30 applied to the test set.
+* compress\_40: Quality level of 40 applied to the test set.
