@@ -12,7 +12,7 @@ The train.py script is used to train the available models.
 Implemented models:
 * AutoEncoder (Standard implementation)
 * U-Net [Ronneberger 2015](https://arxiv.org/pdf/1505.04597.pdf)
-* (In progress) SRCNN [Dong 2015](https://arxiv.org/pdf/1501.00092.pdf)
+* SRCNN [Dong 2015](https://arxiv.org/pdf/1501.00092.pdf)
 * (In progress) TNRD [Chen 2016](https://arxiv.org/pdf/1508.02848.pdf)
 * (In progress) DnCNN [Zhang 2016](https://arxiv.org/pdf/1608.03981.pdf)
 * (In progress) DCGAN [Radford 2016](https://arxiv.org/pdf/1511.06434.pdf)
@@ -48,7 +48,20 @@ The goal of this model is to upscale an image while augmenting its resolution.
 
 ## Datasets description
 
+### MNIST, Fachion MNIST, CIFAR
+
+Those datasets are download using tensorflow_datasets.
+
+### LFW
+
+Images dimension: 128x128x3
+
+Labeled Faces in the Wild is a dataset containing visages, my implementation is based on the full tar archive accessible for download [here](http://vis-www.cs.umass.edu/lfw/#download).
+
+
 ### BSDS500
+
+[Download](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html).
 
 Images dimension: 480x320x3
 

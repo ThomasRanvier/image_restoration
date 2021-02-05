@@ -339,7 +339,8 @@ def load_bsds500(batch_size):
     
     def transforms(x, y):
         return tf.cast(x, tf.float32) / 255., tf.cast(y, tf.float32) / 255.
-    
+    random.seed(42)
+    np.random.seed(42)
     tar_filename = f'{ROOT_DIR}bsds500.tgz'
     # If tar file does not exists
     if not os.path.exists(tar_filename):

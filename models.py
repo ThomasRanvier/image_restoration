@@ -70,7 +70,6 @@ class UNet(GenericModel):
         self._u_conv_3 = tf.keras.layers.Conv2D(16, (3,3), activation='relu', padding='same', strides=1)
         self._u_conv_4 = tf.keras.layers.Conv2D(3, (3,3), activation='sigmoid', padding='same', strides=1)
         
-    
     def call(self, x):
         # contracting path (left side)
         x_1 = self._d_conv_1(x)
@@ -89,3 +88,35 @@ class UNet(GenericModel):
         y_3 = self._u_conv_3(self._u_concat([x_1, u_y_3]))
         y = self._u_conv_4(y_3)
         return y
+
+class SRCNN(GenericModel):
+    def __init__(self,
+                 input_shape,
+                 loss=tf.keras.losses.MeanSquaredError()):
+        super(SRCNN, self).__init__()
+        self._loss = loss
+        self._optimizer_1 = tf.keras.optimizers.SGD(1e-4)
+        self._optimizer_2 = tf.keras.optimizers.SGD(1e-5)
+        self._conv_1 = tf.keras.layers.Conv2D(64, (9,9), activation='relu', padding='same', strides=1)
+        self._conv_2 = tf.keras.layers.Conv2D(32, (3,3), activation='relu', padding='same', strides=1)
+        self._conv_3 = tf.keras.layers.Conv2D(3, (5,5), activation=None, padding='same', strides=1)
+        
+    @tf.function
+    def _train_step(self, x, y):
+        with tf.GradientTape() as tape:
+            y_hat = self.call(x)
+            loss = self._loss(y_hat, y)
+        gradients = tape.gradient(loss, self.trainable_variables)
+        vars_1 = self.trainable_variables[:4]
+        vars_2 = self.trainable_variables[4:]
+        gradients_1 = gradients[:4]
+        gradients_2 = gradients[4:]
+        # Different learning rate depending on layer
+        self._optimizer_1.apply_gradients(zip(gradients_1, vars_1))
+        self._optimizer_2.apply_gradients(zip(gradients_2, vars_2))
+    
+    def call(self, x):
+        x = self._conv_1(x)
+        x = self._conv_2(x)
+        x = self._conv_3(x)
+        return x
